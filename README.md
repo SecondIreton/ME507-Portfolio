@@ -71,5 +71,3 @@ After determining the angle from our bot to the ball, we run a method named ‘a
 
 An important note about this driver is that there is no command to stop the robot when it reaches the ball; once it reaches the ball and sucks it up, it should immediately find the next closest, correctly colored ball and repeat the above process.
 
-#### Color Sensor Processing:
-ff
