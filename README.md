@@ -1,6 +1,11 @@
 # ME507-Portfolio
 Details for ME507 Term Project completed by Gabriel Ahern and Trevor Foley, Spring 2023, Cal Poly SLO
 
+Included in this portfolio are relevant drivers that may be used for similar projects, though the main code is not included as it was not successfully compiled and run. However, it's description is included below.
+
+![image](https://github.com/SecondIreton/ME507-Portfolio/assets/114447418/a6b60dfb-90d8-437f-aefd-f2d76265f13f)
+![image](https://github.com/SecondIreton/ME507-Portfolio/assets/114447418/43912755-c49b-4a76-ab1b-b960edb45506)
+
 ## Overview
 The term project assigned in ME 507 for Spring Quarter of 2023 consisted of designing and manufactuing a robot for a large scale version of the game Hungry Hungry Hippos. In this game, our bot was required to start at one of four colored stations, then find and collect balls of the same color.
 It was then supposed to deposit the collected balls at either its home station or launch them into a center bucket. The constraints and criteria for the project are detailed below:
