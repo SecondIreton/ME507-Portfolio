@@ -39,8 +39,13 @@ After soldering our components to our pcb we found that the 5V and 3v3 rails wer
 ## Software and Data:
 ### SOFTWARE – DRIVERS:
 #### Color Sensor Driver:
+DISCLAIMER: The current version of the driver is essentially a paired down version of the TCS3472 driver by ipa64
+
+The color sensor is a TCS34727, which is driven through I2C protocol. Reading from each of the three color registers (red, green, and blue), requires first writing to a master register on the device to specify which color register to pull from, then reading this value into an array on the microcontroller for processing/display etc. This driver was written by interpreting multiple functions from the Adafruit driver for Arduino into equivalent STM32 HAL, largely using the HAL functions HAL_I2C_Master_Transmit() to write to the master register (specifying color register) and HAL_I2C_Master_Receive() to read this data. Later, we discovered a driver made in STM32 HAL by ipa64, and revised our functions to mimic his style, which used the single function HAL_I2C_Mem_Read() instead of the multiline read and write functions we were calling.
 
 #### Mecanum Wheels/Motor Driver:
+The motor drivers used here are very similar to those written for lab 2, the notable exception being that the off-channel is held low instead of high. Apart from this, it is the same PWM setup. 
+The mecanum driver takes in four motor driver objects and controls all PWM simultaneously. Functions include going forward, backward, and each of the side directions. The direction of the wheels is controlled within the motor driver by either sending a positive or negative speed value.
 
 #### Communication:
 Because of the use of Nathan’s overhead camera as our main sensor for controlling our robot, we developed two external files (one in Python using VSS and another in C++ using the Arduino IDE) to access the camera data, process it to plot a trajectory to the nearest ball of the correct color, then send commands to the Master Mind/main file on the STM MCU over first Bluetooth serial (from our laptop to the ESP32) and then through USART (from the ESP32 to STM). The code for the Bluetooth Serial communication on the ESP32 is simple and is set up to grab the characters sent to it from the laptop and echo them to the STM. This code – and the code for the camera data processor - can be seen in Appendix X, and a deeper dive into the data processing and its setup occurs in the Data Interpretation section.
